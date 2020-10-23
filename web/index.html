@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>在线音乐播放器</title>
+<link rel="stylesheet" href="fonts/iconfont.css">
+<link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="css/player.css" />
+</head>
+<body>
+<!-- 播放器 -->
+<div class="music-player">
+	<!-- audio标签 -->
+	<audio class="music-player-audio"></audio>
+	<!-- 播放器主体 -->
+	<div class="music-player-main">
+		<!-- 模糊背景 -->
+		<div class="music-player-blur"></div>
+		<!-- 唱片 -->
+		<div class="music-player-disc">
+			<!-- 唱片图片 -->
+			<div class="music-player-image"><img width="100%" src="./images/cd.png" alt=""></div>
+			<!-- 指针 -->
+			<div class="music-player-pointer"><img width="100%" src="./images/cd_tou.png" alt=""></div>
+		</div>
+		<!-- 控件主体 -->
+		<div class="music-player-controls">
+			<!-- 歌曲信息 -->
+			<div class="music-info">
+				<h3 class="music-info-title">...</h3>
+				<p class="music-info-singer">...</p>
+			</div>
+			<!-- 控件 -->
+			<div class="player-control">
+				<div class="player-control-content">
+					<div class="player-control-btns">
+						<div class="player-control-btn player-control-btn-prev"><i class="iconfont icon-prev"></i></div>
+						<div class="player-control-btn player-control-btn-play"><i class="iconfont icon-play"></i></div>
+						<div class="player-control-btn player-control-btn-next"><i class="iconfont icon-next"></i></div>
+						<div class="player-control-btn player-control-btn-mode"><i class="iconfont icon-loop"></i></div>
+					</div>
+					<!-- 歌曲调节音量 -->
+					<div class="player-control-volume">
+						<div class="control-volume-icon player-control-btn"><i class="iconfont icon-volume"></i></div>
+						<div class="control-volume-progress progress"></div>
+					</div>
+				</div>
+				<!-- 歌曲播放进度 -->
+				<div class="player-control-content">
+					<div class="player-song-progress progress"></div>
+					<div class="player-song-timeProgress nowTime">00:00</div>
+					<div class="player-song-timeProgress totalTime">00:00</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<button class="function-btn" id="searchBtn">添加歌曲</button>
+		<button class="function-btn" id="clearList">清空歌单</button>
+	</div>
+	<!-- 歌曲列表 -->
+	<div class="music-player-list" style=" overflow-y: scroll;height: 350px">
+		<ul class="music-list-content"></ul>
+	</div>
+</div>
+<!-- 搜索弹窗 -->
+<div id="searchWindow" hidden="hidden" style="z-index: 2;position: absolute;top:15%;left:20%;background: white;width: 60%;height: 80%">
+	<!-- 搜索输入框 -->
+	<div style="text-align: center; margin-top:5%">
+		<input id="searchInput" type="text" placeholder="输入搜索的关键字" size="30"/>
+		&nbsp;&nbsp;
+		<!-- 搜索按钮 -->
+		<button onclick="doSearch()">搜索</button>
+		&nbsp;&nbsp;&nbsp;
+		<!-- 关闭窗口按钮 -->
+		<button id="closeWindow">关闭</button>
+		<!-- 搜索数据源单选按钮 -->
+		<div class="radio-group" id="music-source" style="margin-top:5px">
+			<label><input type="radio" name="source" value="kugou" checked="checked">酷狗</label>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<label><input type="radio" name="source" value="qq">QQ</label>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<label><input type="radio" name="source" value="kuwo">酷我</label>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<label><input type="radio" name="source" value="wangyi">网易云</label>
+		</div>
+		<!-- 结果列表 -->
+		<table id="result" width="100%" align="center"></table>
+	</div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/audioPlayer.min.js"></script>
+<script src="js/function.js"></script>
+</body>
+</html>
